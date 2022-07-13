@@ -13,5 +13,7 @@ I did some cropping around the head, which is defined by the ear and mouth landm
 I first check whether I can get some reasonable MNIST pictures. This is to make sure I understand the many loss functions in GAN. The model is standard DCGAN. This part is inspired by [Emilien Dupont](https://github.com/EmilienDupont/wgan-gp) and I have added the SNGAN models. To make the first few epoches converge faster, I also experimented with add "kick", which simply adds the standard deviations in the loss function. It helps a little in the MNIST dataset, but not much in the cat dataset.
 
 This is a gif without "kick", from left to right is GAN, WGAN-GP, SNGAN, SNGAN with hinge loss.
-
 ![Results without "kick"](./pics/nokick.gif)
+
+Same as above, but with "kick", seems it helps to converge faster for the MNIST dataset.
+![Reesults with "kick"](./pics/kick.gif)
