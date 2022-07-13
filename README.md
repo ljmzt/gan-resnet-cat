@@ -17,3 +17,23 @@ This is a gif without "kick", from left to right is GAN, WGAN-GP, SNGAN, SNGAN w
 
 Same as above, but with "kick", seems it helps to converge faster for the MNIST dataset.
 ![Reesults with "kick"](./pics/kick.gif)
+
+It is interesting to see that the WGAN-GP behaves the best in this check. However, because it is not as efficient (about 30-50% slower) than SNGAN, so I will stick with SNGAN for the cat pictures for now.
+
+## Generated cat pictures
+The training set has ~10,000 pictures and resized to 64x64. The model and the training parameters are from Miyato et al. (2018), especially their Fig 8 and Table 4. The training takes about 1-2 min on a GPU, so takes a while to train. I have tried to make the codes as compact as possible. The main codes are the models\_resnet.py and trainer.py. Example of how to use them is in gan-resnet-cat.ipynb. The post-analysis.ipynb shows the convergence and some sampled figures. The training seems converge after 400 epoches.  I also make the lr smaller and continue the training for another 400 but is not improving that much. 
+
+Here are some generated cat pictures
+
+![GAN](./pics/eg2.png)
+
+Compared with the ones in the training set
+
+![raw](./pics/raw.png)
+
+There still rooms for improvements.
+
+## References
+This work is motivated by
+
+
