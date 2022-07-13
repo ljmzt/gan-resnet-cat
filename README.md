@@ -10,12 +10,12 @@ The raw cat photos are from [Marek Zyla](https://github.com/zylamarek/cat-datase
 I did some cropping around the head, which is defined by the ear and mouth landmarks, to make the face larger. The code to do the cropping and the cropped dataset are in cropped.dir
 
 ## Sanity checks
-I first check whether I can get some reasonable MNIST pictures. This is to make sure I understand the many loss functions in GAN. The model is standard DCGAN. This part is inspired by [Emilien Dupont](https://github.com/EmilienDupont/wgan-gp) and I have added the SNGAN models. To make the first few epoches converge faster, I also experimented with add "kick", which simply adds the standard deviations in the loss function. It helps a little in the MNIST dataset, but not much in the cat dataset.
+I first check whether I can get some reasonable MNIST pictures. This is to make sure I understand the many loss functions in GAN. The model is standard DCGAN. This part is inspired by [Emilien Dupont](https://github.com/EmilienDupont/wgan-gp) and I have added the SNGAN models. To make the first few epoches converge faster, I also experimented with "kick", which simply means adding the standard deviations in the loss function. It helps a little in the MNIST dataset, but not much in the cat dataset.
 
 This is a gif without "kick", from left to right is GAN, WGAN-GP, SNGAN, SNGAN with hinge loss.
 ![Results without "kick"](./pics/nokick.gif)
 
-Same as above, but with "kick", seems it helps to converge faster for the MNIST dataset.
+Same as above, but with "kick", seems it converges faster for the MNIST dataset.
 ![Reesults with "kick"](./pics/kick.gif)
 
 It is interesting to see that the WGAN-GP behaves the best in this check. However, because it is not as efficient (about 30-50% slower) than SNGAN, so I will stick with SNGAN for the cat pictures for now.
@@ -31,12 +31,15 @@ Compared with the ones in the training set
 
 ![raw](./pics/raw.png)
 
-There still rooms for improvements but it is indeed able to get some good ones.
+There are still rooms for improvements but it is indeed able to get some good ones.
 
 ## References
 Besides the works mention aboved, this exercise is also motivated by
 
 https://speech.ee.ntu.edu.tw/~hylee/ml/2022-spring.php
+
 https://towardsdatascience.com/demystified-wasserstein-gan-with-gradient-penalty-ba5e9b905ead
+
 https://jonathan-hui.medium.com/gan-wasserstein-gan-wgan-gp-6a1a2aa1b490
+
 https://github.com/pfnet-research/sngan\_projection/blob/master/updater.py
